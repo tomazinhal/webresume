@@ -4,7 +4,7 @@ import {SingleContact} from '../components/Contact';
 class Contact extends Component {
     render(){
         return (
-            <div>
+            <div id="contact-page">
                 <SingleContact media="linkedin" contact="linkein.com/in/someguy"/>
                 <SingleContact media="instagram" contact="instragram.com/whodatboii"/>
                 <SingleContact media="email" contact="who@dat.boi"/>

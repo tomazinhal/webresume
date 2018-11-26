@@ -4,7 +4,7 @@ import {Name, Introduction} from '../components/Home';
 class Home extends Component{
     render(){
         return (
-            <div>
+            <div id="home-page">
                 <Name />
                 <Introduction />
             </div>
