@@ -1,9 +1,14 @@
 import React, {Component} from 'react';
+import {SingleContact} from '../components/Contact';
 
 class Contact extends Component {
     render(){
         return (
-            <h1>This is the Contact Page</h1>
+            <div>
+                <SingleContact media="linkedin" contact="linkein.com/in/someguy"/>
+                <SingleContact media="instagram" contact="instragram.com/whodatboii"/>
+                <SingleContact media="email" contact="who@dat.boi"/>
+            </div>
         )
     }
 }
