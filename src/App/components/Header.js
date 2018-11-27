@@ -1,24 +1,30 @@
 import React, {Component} from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
+import '../styles/Header.css';
+
 
 class Header extends Component{
     render(){
         return (
             <header>
                 <nav>
-                    <ul>
-                        <li>
-                            <Link to="/">
-                                <h1>HOME</h1>
-                            </Link>
-                            <Link to="/resume">
-                                <h1>RESUME</h1>
-                            </Link>
-                            <Link to="/contact">
-                                <h1>CONTACT</h1>
-                            </Link>
-                        </li>
-                    </ul>
+					<ul id="header-ul">
+						<li className="header-li">
+							<NavLink exact to="/" activeClassName="active">
+								<h1>HOME</h1>
+							</NavLink>
+						</li>
+						<li className="header-li">
+							<NavLink to="/resume" activeClassName="active">
+								<h1>RESUME</h1>
+							</NavLink>
+						</li>
+						<li className="header-li">
+							<NavLink to="/contact" activeClassName="active">
+								<h1>CONTACT</h1>
+							</NavLink>
+						</li>
+					</ul>
                 </nav>
             </header>
         )

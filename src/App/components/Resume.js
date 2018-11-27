@@ -29,7 +29,7 @@ class ScholarshipItem extends ResumeItem{
     constructor(props){
         super(props)
         this.state = {
-            subject: "SUBJ X"
+            subject: props.subject,
         }
     }
 

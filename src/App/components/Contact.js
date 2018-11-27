@@ -1,4 +1,7 @@
 import React, {Component} from 'react';
+
+import '../styles/Contact.css'
+
 import linkedin from '../static/linkedin.png';
 import instagram from '../static/instagram.png';
 import twitter from '../static/twitter.png';
@@ -32,8 +35,14 @@ class SingleContact extends Component{
         console.log(info)
         return (
             <div id={info.media}>
-                <img src={info.logo_link} alt="Media Logo" />
-                <p>{info.contact}</p>
+                <ul>
+                    <li>
+                        <img src={info.logo_link} alt="Media Logo" />
+                    </li>
+                    <li>
+                        <p>{info.contact}</p>
+                    </li>
+                </ul>
             </div>
         )
     }
