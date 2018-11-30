@@ -14,7 +14,14 @@ class App extends Component {
 	render() {
 		return (
 			<div className="App">
-				<Route path='/:handle' component={Profile} />
+				<Header/>
+        <main className="container">
+				<Switch>
+					<Route exact path="/" component={Home} />
+					<Route path="/contact" component={Contact} />
+					<Route path="/resume" component={Resume} />
+				</Switch>
+        </main>
 			</div>
 		);
 	}

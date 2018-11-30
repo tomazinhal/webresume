@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
 class ResumeItem extends Component {
     /*
@@ -37,6 +37,30 @@ class ResumeItem extends Component {
             </div>
         )
     }
+  }
+  render() {
+    let state = this.state;
+    return ( 
+      <div className="professional-card">
+        <h2>{state.title}</h2>
+        <p>{state.description}</p>
+        <div>
+          <h3>Technologies used:</h3>
+          <ul className="technologies-list">
+            {state.technologies.map((tech) => (
+              <li key={tech} className="technology">
+                {tech}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    )
+  }
 }
 
+<<<<<<< HEAD
 export {ResumeItem};
+=======
+export { ScholarshipItem, ProfessionalItem };
+>>>>>>> 544e82f1b37bf2bff89de7f215ce58870bb3abe5
