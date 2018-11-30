@@ -1,10 +1,12 @@
 from flask import Flask, request, jsonify
 from flask_restful import Api, Resource
+from flask_cors import CORS
 from pymongo import MongoClient
 import json
 from bson import json_util
 
 app = Flask(__name__)
+cors = CORS(app, resources={r"/*": {"origins": "*"}})
 api = Api(app)
 
 client = MongoClient(
@@ -31,4 +33,3 @@ api.add_resource(User, '/u/<string:handle>')
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", debug=True)
-
