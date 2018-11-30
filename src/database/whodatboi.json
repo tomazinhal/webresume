@@ -1,0 +1,75 @@
+{
+    "handle": "whodisboi",
+    "personal": {
+        "name": {
+            "first": "First Name",
+            "last": "Last Name"
+        },
+        "birthdate": "Date of Birth",
+        "description": "Oh hello, didn't see you there. Would you like a pokemon?"
+    },
+    "resume": [
+        {
+            "type": "school",
+            "subject" : "SNAFU",
+            "description": "the description for this project",
+            "techonologies": [
+                "python", "C", "sql"
+            ]
+        },
+        {
+            "type": "school",
+            "subject" : "OH OU KNOW",
+            "description": "the description for this project_",
+            "techonologies": [
+                "python"
+            ]
+        },
+        {
+            "type": "professional",
+            "title" : "SNAFU",
+            "description": "description of the job done",
+            "techonologies": [
+                "python", "C"
+            ]
+        },
+        {
+            "type": "professional",
+            "title" : "developer",
+            "description": "the description for this project",
+            "techonologies": [
+                "C++"
+            ]
+        },
+        {
+            "type": "professional",
+            "title" : "project manager",
+            "description": "the description for this project",
+            "techonologies": [
+                "JAVA"
+            ]
+        }
+    ],
+    "contact": [
+        {
+            "media": "instagram",
+            "link": "url.instagram/asd"
+        },
+        {
+            "media": "linkedin",
+            "link": "url.linkedin/asd"
+        },
+        {
+            "media": "facebook",
+            "link": "url.facebook/asd"
+        },
+        {
+            "media": "phone",
+            "link": "+0012345678932"
+        },
+        {
+            "media": "email",
+            "link": "who@dat.boi"
+        }
+    ]
+}

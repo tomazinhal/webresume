@@ -17,6 +17,15 @@ class Contact extends Component {
                     <li className="contact-card">
                         <SingleContact media="email" contact="who@dat.boi"/>
                     </li>
+                    <li className="contact-card">
+                        <SingleContact media="facebook" contact="facebook.com/yalredyknowhoitiz"/>
+                    </li>
+                    <li className="contact-card">
+                        <SingleContact media="phone" contact="721712787"/>
+                    </li>
+                    <li className="contact-card">
+                        <SingleContact media="twitter" contact="twitter.com/whodatboii"/>
+                    </li>
                 </ul>
             </div>
         )
