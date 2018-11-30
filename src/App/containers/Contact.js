@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {SingleContact} from '../components/Contact';
 
-import '../styles/Contact.css'
+import '../styles/Contact.scss'
 
 class Contact extends Component {
     render(){

@@ -8,7 +8,7 @@ import Header from './components/Header';
 import _404 from './containers/NotFound';
 import Profile from './containers/Profile';
 
-import './App.css';
+import './App.scss';
 
 class App extends Component {
 	render() {
