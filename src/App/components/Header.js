@@ -1,34 +1,40 @@
 import React, {Component} from 'react';
 import { NavLink } from 'react-router-dom';
 import '../styles/Header.css';
+import logo from '../static/logo.svg';
 
 
 class Header extends Component{
-    render(){
-        return (
-            <header>
-                <nav>
-					<ul id="header-ul">
-						<li className="header-li">
-							<NavLink exact to="/" activeClassName="active">
-								<h1>HOME</h1>
-							</NavLink>
-						</li>
-						<li className="header-li">
-							<NavLink to="/resume" activeClassName="active">
-								<h1>RESUME</h1>
-							</NavLink>
-						</li>
-						<li className="header-li">
-							<NavLink to="/contact" activeClassName="active">
-								<h1>CONTACT</h1>
-							</NavLink>
-						</li>
-					</ul>
-                </nav>
-            </header>
-        )
-    }
+  render(){
+    return (
+      <header>
+        <div className="container">
+          <section className="header__image">
+            <img src={logo}/>
+          </section>
+          <nav className="header__main-nav">
+            <ul className="header__options">
+              <li className="header__option">
+                <NavLink exact to="/" activeClassName="active">
+                  HOME
+                </NavLink>
+              </li>
+              <li className="header__option">
+                <NavLink to="/resume" activeClassName="active">
+                  RESUME
+                </NavLink>
+              </li>
+              <li className="header__option">
+                <NavLink to="/contact" activeClassName="active">
+                  CONTACT
+                </NavLink>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+    )
+  }
 }
 
 export default Header;
