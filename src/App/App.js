@@ -15,13 +15,16 @@ class App extends Component {
 		return (
 			<div className="App">
 				<Header/>
-        <main className="container">
-				<Switch>
-					<Route exact path="/" component={Home} />
-					<Route path="/contact" component={Contact} />
-					<Route path="/resume" component={Resume} />
-				</Switch>
-        </main>
+				<main className="container">
+					<Switch>
+						<Route exact path="/u/:handle/" component={Home} />
+						<Route path="/u/:handle/contact" component={Contact} />
+						<Route path="/u/:handle/resume" component={Resume} />
+						<Route path="/u/:handle" component={Profile} />
+						<Route exact path="/" component={Home} />
+						<Route component={_404} />
+					</Switch>
+				</main>
 			</div>
 		);
 	}
@@ -30,10 +33,7 @@ class App extends Component {
 			<div>
 			<Header/>
 			<Switch>
-				<Route exact path="/" component={Home} />
-				<Route path="/contact" component={Contact} />
-				<Route path="/resume" component={Resume} />
-				<Route component={_404} />
+				<Route path="/u/:handle" component={Profile} />
 			</Switch>
 			</div>
 		)

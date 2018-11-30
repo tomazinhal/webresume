@@ -19,48 +19,23 @@ class ResumeItem extends Component {
     }
 
     render(){
-        let state = this.state;
-        return (
-            <div className={state.type}>
-                <h2>{state.name}</h2>
-                <p>{state.description}</p>
-                <div>
-                    <h3>Technologies used:</h3>
-                    <ul className="technologies-list">
-                        {state.technologies.map((tech) => (
-                            <div key={tech} className="technology">
-                                <li>{tech}</li>
-                            </div>
-                        ))}
-                    </ul>
-                </div>
-            </div>
-        )
-    }
-  }
-  render() {
-    let state = this.state;
-    return ( 
-      <div className="professional-card">
-        <h2>{state.title}</h2>
-        <p>{state.description}</p>
-        <div>
-          <h3>Technologies used:</h3>
-          <ul className="technologies-list">
-            {state.technologies.map((tech) => (
-              <li key={tech} className="technology">
-                {tech}
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
-    )
+      let state = this.state;
+      return (
+          <div className={state.type}>
+              <h2>{state.name}</h2>
+              <p>{state.description}</p>
+              <div>
+                  <h3>Technologies used:</h3>
+                  <ul className="technologies-list">
+                      {state.technologies.map((tech) => (
+                          <div key={tech} className="technology">
+                              <li>{tech}</li>
+                          </div>
+                      ))}
+                  </ul>
+              </div>
+          </div>
+      )
   }
 }
-
-<<<<<<< HEAD
 export {ResumeItem};
-=======
-export { ScholarshipItem, ProfessionalItem };
->>>>>>> 544e82f1b37bf2bff89de7f215ce58870bb3abe5

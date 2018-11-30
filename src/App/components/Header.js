@@ -5,12 +5,17 @@ import logo from '../static/logo.svg';
 
 
 class Header extends Component{
+  state = {
+    handle: ""
+  }
+
   render(){
+    const handle = this.state.handle;
     return (
       <header>
         <div className="container">
           <section className="header__image">
-            <img src={logo}/>
+            <img src={logo} alt="logo"/>
           </section>
           <nav className="header__main-nav">
             <ul className="header__options">

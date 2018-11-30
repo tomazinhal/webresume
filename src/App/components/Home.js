@@ -1,23 +1,28 @@
 import React, {Component} from 'react';
 
 class Name extends Component{
+  state = {
+    name: {
+      first: "",
+      last: "",
+    },
+    birthdate: "",
+    description: ""
+  }
+
   render(){
+    const name = this.state.name.first + " " + this.state.name.last
+    const dob = this.state.birthdate
+    const description = this.state.description
     return (
       <div id="user-name">
-        <h1>YOUR NAME HERE</h1>
+        <h1>IT'S YA BOI {name}</h1>
+        <h2>Born in {dob}</h2>
+        <p>About me: <br/>{description}</p>
       </div>
     )
   }
 }
 
-class Introduction extends Component{
-  render(){
-    return (
-      <div id="user-introduction">
-        <p>Greetings this is the one and only, the unique, el classico... </p>
-      </div>
-    )
-  }
-}
 
-export {Name, Introduction};
+export default Name;
