@@ -1,26 +1,26 @@
-img {
-    width: 50px;
+.card-container img {
+  width: 50px;
 }
 
 .contact-card {
-    text-align: left;
-    float: left;
+  text-align: left;
+  float: left;
 }
 
 .contact-card li {
-    display: inline-block;
+  display: inline-block;
 }
 
 .contact-card li img{
-    vertical-align: middle;
+  vertical-align: middle;
 }
 
 .contact-card li p{
-    padding-left: 5px;
+  padding-left: 5px;
 }
 
 .card-container {
-    padding: 10px;
-    border: 3px;
-    border-color: black;
+  padding: 10px;
+  border: 3px;
+  border-color: black;
 }
