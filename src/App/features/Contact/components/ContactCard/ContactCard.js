@@ -1,16 +1,14 @@
-import React, {
-  Component
-} from 'react';
+import React, { Component } from 'react';
 
-import linkedin from '../static/linkedin.png';
-import instagram from '../static/instagram.png';
-import twitter from '../static/twitter.png';
-import facebook from '../static/facebook.png';
-import email from '../static/email.png';
-import phone from '../static/phone.png';
-import other from '../static/other.png';
+import linkedin from '../../../../static/image/linkedin.png';
+import instagram from '../../../../static/image/instagram.png';
+import twitter from '../../../../static/image/twitter.png';
+import facebook from '../../../../static/image/facebook.png';
+import email from '../../../../static/image/email.png';
+import phone from '../../../../static/image/phone.png';
+import other from '../../../../static/image/other.png';
 
-class SingleContact extends Component {
+class ContactCard extends Component {
   constructor(props) {
     super(props);
     let src;
@@ -60,6 +58,4 @@ class SingleContact extends Component {
   }
 }
 
-export {
-  SingleContact
-};
+export default ContactCard;

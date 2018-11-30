@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import {ResumeItem} from '../components/Resume';
+import {ResumeItem} from '../../components/ResumeList/ResumeList';
 
-import '../styles/Resume.scss'
+import './Resume.scss'
 
 class Resume extends Component {
     render(){

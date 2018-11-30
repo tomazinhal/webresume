@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 
-class Name extends Component{
+class Home extends Component{
+
   state = {
     name: {
       first: "",
@@ -15,14 +16,15 @@ class Name extends Component{
     const dob = this.state.birthdate
     const description = this.state.description
     return (
-      <div id="user-name">
-        <h1>IT'S YA BOI {name}</h1>
-        <h2>Born in {dob}</h2>
-        <p>About me: <br/>{description}</p>
+      <div id="home-page">
+        <div id="user-name">
+          <h1>IT'S YA BOI {name}</h1>
+          <h2>Born in {dob}</h2>
+          <p>About me: <br/>{description}</p>
+        </div>
       </div>
     )
   }
 }
 
-
-export default Name;
+export default Home;
