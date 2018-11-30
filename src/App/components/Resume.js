@@ -44,9 +44,9 @@ class ScholarshipItem extends ResumeItem {
           <h3>Technologies used:</h3>
           <ul className="technologies-list">
             {state.technologies.map((tech) => (
-              <div key={tech} className="technology">
-                  <li>{tech}</li>
-              </div>
+              <li key={tech} className="technology">
+                {tech}
+              </li>
             ))}
           </ul>
         </div>
@@ -74,9 +74,9 @@ class ProfessionalItem extends ResumeItem {
           <h3>Technologies used:</h3>
           <ul className="technologies-list">
             {state.technologies.map((tech) => (
-              <div key={tech} className="technology">
-                <li>{tech}</li>
-              </div>
+              <li key={tech} className="technology">
+                {tech}
+              </li>
             ))}
           </ul>
         </div>
