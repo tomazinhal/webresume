@@ -12,7 +12,7 @@ class Header extends Component{
   render(){
     // const handle = this.state.handle;
     return (
-      <header>
+      <header className="header">
         <div className="container">
           <section className="header__image">
             <img src={logo} alt="logo"/>

@@ -1,14 +1,6 @@
-header {
-  background-color: #333;
-}
-
-ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-}
 
 .header{
+  background-color: #333;
   &__main-nav{
     margin-top: 10px;
     display: flex;
@@ -40,26 +32,9 @@ ul {
       &:hover{
         background-image: radial-gradient(ellipse, #a9a9a9, transparent 60%);
       }
+      &.active {
+        background-image: radial-gradient(ellipse, #808080, transparent 60%);
+      }
     }
   }
-}
-
-a {
-  display: block;
-  color: #ccc;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  &:hover {
-    color: #ccc;
-    text-decoration: none;
-  }
-  &:focus {
-    color: #ccc;
-    text-decoration: none;
-  }
-}
-
-.active {
-  background-image: radial-gradient(ellipse, #808080, transparent 60%);
 }

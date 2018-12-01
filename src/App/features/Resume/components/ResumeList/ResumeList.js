@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 
-class ResumeItem extends Component {
+import './ResumeList.scss'
+
+class ResumeList extends Component {
   /*
-  A ResumeItem may have multiple types. For example:
+  A ResumeList may have multiple types. For example:
     * Professional Project: should have the job name (developer, tester, etc), description and technologies used.
     * Scholarship project: subject name, description, technologies
     * Seminar (?): topic, description
@@ -38,4 +40,4 @@ class ResumeItem extends Component {
     )
   }
 }
-export {ResumeItem};
+export {ResumeList};

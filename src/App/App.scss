@@ -31,3 +31,25 @@
     transform: rotate(360deg);
   }
 }
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  display: block;
+  color: #ccc;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  &:hover {
+    color: #ccc;
+    text-decoration: none;
+  }
+  &:focus {
+    color: #ccc;
+    text-decoration: none;
+  }
+}
