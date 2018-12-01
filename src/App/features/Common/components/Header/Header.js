@@ -10,7 +10,7 @@ class Header extends Component{
   }
 
   render(){
-    const handle = this.state.handle;
+    // const handle = this.state.handle;
     return (
       <header>
         <div className="container">
