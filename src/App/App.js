@@ -8,10 +8,15 @@ import Header from './features/Common/components/Header/Header';
 import _404 from './containers/NotFound';
 import Profile from './containers/Profile';
 
-import './App.scss';
+import './sass/global.scss';
 
 class App extends Component {
+  state = {
+    handle: "me"
+  }
 	render() {
+    const handle = this.state.handle;
+
 		return (
 			<div className="App">
 				<Header/>

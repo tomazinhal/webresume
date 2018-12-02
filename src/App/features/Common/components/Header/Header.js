@@ -5,12 +5,8 @@ import logo from '../../../../static/svg/logo.svg';
 
 
 class Header extends Component{
-  state = {
-    handle: ""
-  }
 
   render(){
-    // const handle = this.state.handle;
     return (
       <header className="header">
         <div className="container">
