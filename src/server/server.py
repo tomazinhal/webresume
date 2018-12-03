@@ -21,6 +21,13 @@ class User(Resource):
         data = db.users.find_one({
             "handle": handle
         })
+        path = request.full_path
+        if "personal" in path and "personal" not in handle:
+            data = data["personal"]
+        elif "resume" in path and "resume" not in handle:
+            data = data["resume"]
+        elif "contact" in path and "contact" not in handle:
+            data = data["contact"]
         return jsonify(json.dumps(data, default=json_util.default))
 
     def post(self, handle):
@@ -29,7 +36,13 @@ class User(Resource):
         doc = db.users.insert_one(data)
         return doc
 
-api.add_resource(User, '/u/<string:handle>')
+api.add_resource(
+    User,
+    '/u/<string:handle>',
+    '/u/<string:handle>/personal',
+    '/u/<string:handle>/contact',
+    '/u/<string:handle>/resume'
+)
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", debug=True)
