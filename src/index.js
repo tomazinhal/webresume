@@ -2,12 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {BrowserRouter} from 'react-router-dom';
 import './index.css';
-import App from './App/App';
+//import App from './App/App';
+import Sandbox from './App/sandbox/App';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
     <BrowserRouter>
-        <App />
+        <Sandbox />
     </BrowserRouter>
 , document.getElementById('root'));
 
