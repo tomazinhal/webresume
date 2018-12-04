@@ -28,7 +28,7 @@ class Header extends Component{
         return (
             <div>
                 <ul>
-                    <li><Link to={`/`} />Home</li>
+                    <li><Link to={`/`} >Home</Link></li>
                 </ul>
             </div>
         )
@@ -114,8 +114,27 @@ class ProfileHome extends Component{
 }
 
 class ProfileResume extends Component{
+    state = {
+        resume: []
+    }
+    componentDidMount(){
+        if (this.props.resume === undefined){
+            const handle = this.props.match.params.handle
+            fetch(`http://localhost:5000/u/${handle}/resume`)
+            .then(response => response.json())
+            .then(data => {
+                const parsed = JSON.parse(data);
+                this.setState({
+                    resume: parsed
+                });
+            });
+            console.log("MOUNTED RESUME")
+        }
+    }
+
+
     render(){
-        const resume = this.props.resume
+        const resume = this.props.resume || this.state.resume
         console.log(resume)
         const items = resume.map((item, index) => (
                 <ResumeItem key={index} item={item} />
@@ -129,22 +148,6 @@ class ProfileResume extends Component{
                 </ul>
             </div>
         )
-        /*
-        const resume = this.props.resume
-        console.log(resume)
-        return (
-            <div>
-                <h1>PROFILE RESUME</h1>
-                <ul>
-                    {resume.map((exp) => (
-                        <li key={exp.type}>
-                            <ResumeItem item={exp}/>
-                        </li>
-                    ))}
-                </ul>
-            </div>
-        )
-        */
     }
 }
 
