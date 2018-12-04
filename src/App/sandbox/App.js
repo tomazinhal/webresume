@@ -23,21 +23,45 @@ class Main extends Component {
     }
 }
 
-
-const Header = () => (
-    <div>
-        <ul>
-            <li><Link to={`/`} />Home</li>
-        </ul>
-    </div>
-);
-
-class Profile extends Component {
-    render(){
+class Header extends Component{
+    render() {
         return (
             <div>
-                <ProfileHeader/>
-                <ProfileMain />
+                <ul>
+                    <li><Link to={`/`} />Home</li>
+                </ul>
+            </div>
+        )
+    }
+}
+
+class Profile extends Component {
+    state = {
+        handle: "",
+        profile: ""
+    }
+
+    componentDidMount() {
+        const handle = this.props.match.params.handle
+        fetch(`http://localhost:5000/u/${handle}`)
+        .then(response => response.json())
+        .then(data => {
+            const parsed = JSON.parse(data);
+            this.setState({
+                handle: handle,
+                profile: parsed
+            });
+        });
+        console.log("MOUNTED PROFILE")
+    }
+
+    render(){
+        const state = this.state
+        //console.log(state.profile)
+        return (
+            <div>
+                <ProfileHeader handle={state.handle}/>
+                <ProfileMain profile={state.profile}/>
             </div>
         )        
     }
@@ -45,10 +69,10 @@ class Profile extends Component {
 
 class ProfileHeader extends Component {
     render(){
-        console.log(this.props)
-        const handle = this.props;
+        const handle = this.props.handle;
         return (
             <ul>
+                <p>Handle: <b>{handle}</b></p>
                 <li><Link to={`/u/${handle}`} >Home</Link></li>
                 <li><Link to={`/u/${handle}/resume`} >Resume</Link></li>
                 <li><Link to={`/u/${handle}/contact`} >Contact</Link></li>
@@ -57,17 +81,23 @@ class ProfileHeader extends Component {
     }
 }
 
-class ProfileMain extends Component {   
-    state = {
-        handle: ""
+class ProfileMain extends Component {
+    componentDidMount(){
+        if(this.props.profile === undefined){
+
+        }
     }
     render(){
-        const handle = this.state.handle
+        const profile = this.props.profile
+        const resume = profile.resume
+        const contact = profile.contact
+        const personal = profile.personal
+        //console.log(resume)
         return (
             <Switch>
-                <Route path={`/u/:handle`} component={ProfileHome}/>
-                <Route path={`/u/:handle/resume`} component={ProfileResume}/>
-                <Route path={`/u/:handle/contact`} component={ProfileContact}/>
+                <Route path="/u/:handle/resume" render={profile => <ProfileResume resume={resume}/>} />
+                <Route path="/u/:handle/contact" render={profile => <ProfileContact contact={contact}/>} />
+                <Route path="/u/:handle" render={profile => <ProfileHome personal={personal}/>} />
             </Switch>
         )
     }
@@ -85,13 +115,57 @@ class ProfileHome extends Component{
 
 class ProfileResume extends Component{
     render(){
+        const resume = this.props.resume
+        console.log(resume)
+        const items = resume.map((item, index) => (
+                <ResumeItem key={index} item={item} />
+            )
+        )
+        return (
+            <div>
+                <h1>ProfileResume</h1>
+                <ul>
+                    {items}
+                </ul>
+            </div>
+        )
+        /*
+        const resume = this.props.resume
+        console.log(resume)
         return (
             <div>
                 <h1>PROFILE RESUME</h1>
+                <ul>
+                    {resume.map((exp) => (
+                        <li key={exp.type}>
+                            <ResumeItem item={exp}/>
+                        </li>
+                    ))}
+                </ul>
             </div>
+        )
+        */
+    }
+}
+
+class ResumeItem extends Component{
+    render(){
+        console.log(this.props)
+        return (
+            <ul>
+                <li><h2>{this.props.item.type}</h2></li>
+                <li><h3>{this.props.item.subject || this.props.item.title}</h3></li>
+                <li><p>{this.props.item.description}</p></li>
+                <ul>
+                    {this.props.item.techonologies.map((tech) => ( //FIX TYPO ON DB OF TECH >O< NOLOGIE
+                        <li key={tech}>{tech}</li>
+                    ))}
+                </ul>
+            </ul>
         )
     }
 }
+
 class ProfileContact extends Component{
     render(){
         return (
