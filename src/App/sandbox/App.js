@@ -35,6 +35,8 @@ class Header extends Component{
     }
 }
 
+const ProfileContext = React.createContext("")
+
 class Profile extends Component {
     state = {
         handle: "",
@@ -42,6 +44,7 @@ class Profile extends Component {
     }
 
     componentDidMount() {
+        console.log(this.props)
         const handle = this.props.match.params.handle
         fetch(`http://localhost:5000/u/${handle}`)
         .then(response => response.json())
@@ -52,101 +55,95 @@ class Profile extends Component {
                 profile: parsed
             });
         });
-        console.log("MOUNTED PROFILE")
+        console.log("COMPONENTDIDMOUNT PROFILE")
     }
 
     render(){
         const state = this.state
-        //console.log(state.profile)
+        console.log(state.profile)
         return (
             <div>
-                <ProfileHeader handle={state.handle}/>
-                <ProfileMain profile={state.profile}/>
+                <ProfileContext.Provider value={state}>
+                    <ProfileHeader/>
+                    <ProfileMain/>    
+                </ProfileContext.Provider>
             </div>
         )        
     }
 }
+Profile.contextType = ProfileContext;
+
 
 class ProfileHeader extends Component {
     render(){
-        const handle = this.props.handle;
+        //const handle = this.props.handle;
         return (
-            <ul>
-                <p>Handle: <b>{handle}</b></p>
-                <li><Link to={`/u/${handle}`} >Home</Link></li>
-                <li><Link to={`/u/${handle}/resume`} >Resume</Link></li>
-                <li><Link to={`/u/${handle}/contact`} >Contact</Link></li>
-            </ul>
+            <ProfileContext.Consumer>
+                {(context) => {
+                    const handle = context.handle;
+                    return (
+                        <ul>    
+                            <p>Handle: <b>{handle}</b></p>
+                            <li><Link to={`/u/${handle}`} >Home</Link></li>
+                            <li><Link to={`/u/${handle}/resume`} >Resume</Link></li>
+                            <li><Link to={`/u/${handle}/contact`} >Contact</Link></li>
+                        </ul>
+                    )}
+                }
+            </ProfileContext.Consumer>
         )
     }
 }
 
 class ProfileMain extends Component {
-    componentDidMount(){
-        if(this.props.profile === undefined){
-
-        }
-    }
     render(){
-        const profile = this.props.profile
-        const resume = profile.resume
-        const contact = profile.contact
-        const personal = profile.personal
-        //console.log(resume)
-        return (
+        return(
             <Switch>
-                <Route path="/u/:handle/resume" render={profile => <ProfileResume resume={resume}/>} />
-                <Route path="/u/:handle/contact" render={profile => <ProfileContact contact={contact}/>} />
-                <Route path="/u/:handle" render={profile => <ProfileHome personal={personal}/>} />
+                <Route path="/u/:handle/resume" component={ProfileResume} />
+                <Route path="/u/:handle/contact" component={ProfileContact} />
+                <Route path="/u/:handle" component={ProfileHome} />
             </Switch>
         )
     }
 }
 
 class ProfileHome extends Component{
-    render(){
+        render(){
         return (
-            <div>
-                <h1>PROFILE HOME</h1>
-            </div>
+            <ProfileContext.Consumer>
+                {(context) => {
+                    console.log("profilehome:")
+                    console.log(context)
+                    const personal = context.profile.personal
+                    return (
+                        <div>
+                            <h2>Name: {personal.name.first} {personal.name.last}</h2>
+                            <p>{personal.description}</p>
+                        </div>
+                    )
+                }}
+            </ProfileContext.Consumer>
         )
     }
 }
 
 class ProfileResume extends Component{
-    state = {
-        resume: []
-    }
-    componentDidMount(){
-        if (this.props.resume === undefined){
-            const handle = this.props.match.params.handle
-            fetch(`http://localhost:5000/u/${handle}/resume`)
-            .then(response => response.json())
-            .then(data => {
-                const parsed = JSON.parse(data);
-                this.setState({
-                    resume: parsed
-                });
-            });
-            console.log("MOUNTED RESUME")
-        }
-    }
-
-
     render(){
-        const resume = this.props.resume || this.state.resume
-        console.log(resume)
-        const items = resume.map((item, index) => (
-                <ResumeItem key={index} item={item} />
-            )
-        )
         return (
-            <div>
-                <h1>ProfileResume</h1>
-                <ul>
-                    {items}
-                </ul>
-            </div>
+            <ProfileContext.Consumer>
+                {(context) => {
+                    console.log("profileresume:")
+                    console.log(context)
+                    const resume = context.profile.resume
+                    return (
+                        <div>
+                            {resume.map((item, index) => (
+                                <ResumeItem key={index} item={item} />
+                            ))}
+                        </div>
+                    )
+                }}
+            </ProfileContext.Consumer>
         )
     }
 }
