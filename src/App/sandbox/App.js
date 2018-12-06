@@ -1,6 +1,14 @@
 import React, { Component } from 'react';
 import { Switch, Route, Link } from 'react-router-dom';
 
+import linkedin from '../static/image/linkedin.png';
+import instagram from '../static/image/instagram.png';
+import twitter from '../static/image/twitter.png';
+import facebook from '../static/image/facebook.png';
+import email from '../static/image/email.png';
+import phone from '../static/image/phone.png';
+import other from '../static/image/other.png';
+
 class Sandbox extends Component {
   render(){
         return (
@@ -117,8 +125,17 @@ class ProfileHome extends Component{
                     const personal = context.profile.personal
                     return (
                         <div>
-                            <h2>Name: {personal.name.first} {personal.name.last}</h2>
-                            <p>{personal.description}</p>
+                            {
+                                personal === undefined && <h1>Loading...</h1>
+                            }
+                            {
+                                personal !== undefined && (
+                                    <div>
+                                        <h2>Name: {personal.name.first} {personal.name.last}</h2>
+                                        <p>{personal.description}</p>
+                                    </div>
+                                )
+                            }
                         </div>
                     )
                 }}
@@ -137,9 +154,15 @@ class ProfileResume extends Component{
                     const resume = context.profile.resume
                     return (
                         <div>
-                            {resume.map((item, index) => (
-                                <ResumeItem key={index} item={item} />
-                            ))}
+                            {
+                                resume === undefined && <h1>Loading...</h1>
+                            }
+                            {
+                                resume !== undefined &&
+                                resume.map((item, index) => (
+                                    <ResumeItem key={index} item={item} />
+                                ))
+                            }
                         </div>
                     )
                 }}
@@ -171,7 +194,61 @@ class ProfileContact extends Component{
         return (
             <div>
                 <h1>PROFILE CONTACT</h1>
+                <ProfileContext.Consumer>
+                    {(context) => {
+                        const contacts = context.profile.contact
+                        return (
+                            <div>
+                                {contacts === undefined && <h1>Loading...</h1>}
+                                {contacts !== undefined &&
+                                contacts.map(contact =>
+                                    <Contact key={contact.link} media={contact.media} link={contact.link} />)}
+                            </div>
+                        )
+                    }}
+                </ProfileContext.Consumer>
             </div>
+        )
+    }
+}
+
+class Contact extends Component{
+
+    imgSrc = function(media) {
+        let src = null;
+        switch (media) {
+            case "linkedin":
+              src = linkedin;
+              break;
+            case "instagram":
+              src = instagram;
+              break;
+            case "facebook":
+              src = facebook;
+              break;
+            case "twitter":
+              src = twitter;
+              break;
+            case "email":
+              src = email;
+              break;
+            case "phone":
+              src = phone;
+              break;
+            default:
+              src = other;
+          }
+          return src;
+    }
+
+    render (){
+        const media = this.props.media;
+        const link = this.props.link;
+        return (
+            <ul>
+                <li><img src={this.imgSrc(media)} alt="media logo"/></li>
+                <li><p>{link}</p></li>
+            </ul>
         )
     }
 }
